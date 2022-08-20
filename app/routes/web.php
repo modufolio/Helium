@@ -4,5 +4,9 @@ return [
 
     '/'   => 'homepage',
     'api' => 'api',
-    'about' => 'about',
+    'json' => function () {
+        return [
+            'message' => 'hello world'
+        ];
+    }
 ];

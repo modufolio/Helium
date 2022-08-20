@@ -9,13 +9,14 @@ class App
         $uri_path = parse_url($uri, PHP_URL_PATH);
         $uri_segments = explode('/', $uri_path);
         $search = empty($uri_segments[1]) ? $uri : $uri_segments[1];
-        $actions = get_class_methods($class);
 
-        if(!isset($map[$search])){
-            return notFound();
+        $action = $map[$search] ?? notFound();
+
+        if(is_a($action, 'Closure')){
+            return self::Io($action());
         }
-
-        $actionController = strtolower($_SERVER['REQUEST_METHOD']) . ucfirst($map[$search]);
+        $actions = get_class_methods($class);
+        $actionController = strtolower($_SERVER['REQUEST_METHOD']) . ucfirst($action);
 
         if (!in_array($actionController, $actions)) {
             return notFound();
