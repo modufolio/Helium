@@ -5,9 +5,10 @@ class App
 {
     public static function run($map, $class): string
     {
-        $uri_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $uri = $_SERVER['REQUEST_URI'];
+        $uri_path = parse_url($uri, PHP_URL_PATH);
         $uri_segments = explode('/', $uri_path);
-        $search = $uri_segments ? $uri_segments[1] : $uri_path;
+        $search = empty($uri_segments[1]) ? $uri : $uri_segments[1];
         $actions = get_class_methods($class);
 
         if(!isset($map[$search])){
@@ -21,7 +22,6 @@ class App
         }
 
         return self::Io($class->$actionController());
-
     }
 
     public static function Io($input): string
@@ -45,11 +45,3 @@ class App
         return '';
     }
 }
-
-
-
-
-
-
-
-

@@ -4,6 +4,10 @@ namespace App\Controllers;
 
 class Controller
 {
+    public function getHomepage(): string
+    {
+        return 'homepage';
+    }
 
     public function getApi(): string
     {
