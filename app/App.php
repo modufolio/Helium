@@ -5,7 +5,7 @@ class App
 {
     public static function run($map, $class): string
     {
-        $uri = $_SERVER['REQUEST_URI'];
+        $uri = strtok($_SERVER['REQUEST_URI'], '?');
         $uri_path = parse_url($uri, PHP_URL_PATH);
         $uri_segments = explode('/', $uri_path);
         $search = empty($uri_segments[1]) ? $uri : $uri_segments[1];
