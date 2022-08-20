@@ -1,0 +1,16 @@
+{
+	"type": "project",
+	"description": "starter app",
+	"license": "MIT",
+	"autoload": {
+		"psr-4": {
+			"App\\": "App"
+		}
+	},
+	"scripts": {
+		"start": [
+			"Composer\\Config::disableProcessTimeout",
+			"@php -S localhost:8005 -t public/"
+		]
+	}
+}
