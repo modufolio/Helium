@@ -3,7 +3,7 @@
 return [
 
     '/'   => 'homepage',
-    'api' => 'api',
+    'api/list' => 'api',
     'json' => function () {
         return [
             'message' => 'hello world'

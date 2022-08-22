@@ -6,11 +6,8 @@ class App
     public static function run($map, $class): string
     {
         $uri = strtok($_SERVER['REQUEST_URI'], '?');
-        $uri_path = parse_url($uri, PHP_URL_PATH);
-        $uri_segments = explode('/', $uri_path);
-        $search = empty($uri_segments[1]) ? $uri : $uri_segments[1];
-
-        $action = $map[$search] ?? notFound();
+        $uri_path = $uri === '/' ? '/' : substr(parse_url($uri, PHP_URL_PATH), 1);
+        $action = $map[$uri_path] ?? notFound();
 
         if(is_a($action, 'Closure')){
             return self::Io($action());
