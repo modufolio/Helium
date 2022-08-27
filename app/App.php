@@ -3,11 +3,11 @@ namespace App;
 
 class App
 {
-    public static function run($map, $class): string
+    public static function run(array $routes, $class): string
     {
         $uri = strtok($_SERVER['REQUEST_URI'], '?');
         $uri_path = $uri === '/' ? '/' : substr(parse_url($uri, PHP_URL_PATH), 1);
-        $action = $map[$uri_path] ?? notFound();
+        $action = $routes[$uri_path] ?? notFound();
 
         if(is_a($action, 'Closure')){
             return self::Io($action());

@@ -8,8 +8,8 @@ error_reporting(0);
 
 require_once '../bootstrap.php';
 
-$map = include '../app/routes/web.php';
+$routes = include '../app/routes/web.php';
 
 $controller = new Controller();
 
-echo App::run($map, $controller);
+echo App::run($routes, $controller);
