@@ -8,7 +8,7 @@ error_reporting(0);
 
 require_once '../bootstrap.php';
 
-$routes = include '../app/routes/web.php';
+$routes = include '../routes/web.php';
 
 $controller = new Controller();
 
