@@ -27,12 +27,12 @@ class App
 
         // Simple HTML response
         if (is_string($input) === true) {
-            return (new Response($input))->send();
+            return (new Response($input,'text/html',200, self::headers()))->send();
         }
 
         // array to json conversion
         if (is_array($input) === true) {
-            return (new Response($input))->json($input)->send();
+            return (new Response($input))->json($input, null,200, self::headers())->send();
         }
 
         // Response Configuration
@@ -41,5 +41,12 @@ class App
         }
 
         return '';
+    }
+
+    public static function headers(): array
+    {
+        return [
+            'App' => Timer::app() . ' ms',
+        ];
     }
 }
