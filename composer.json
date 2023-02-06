@@ -1,6 +1,6 @@
 {
 	"type": "project",
-	"description": "starter app",
+	"description": "Helium is a lightweight, fast and simple mirco-router for PHP.",
 	"license": "MIT",
 	"autoload": {
 		"psr-4": {
