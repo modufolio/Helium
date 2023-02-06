@@ -162,7 +162,7 @@ class Response
     public static function json($body = '', ?int $code = null, ?bool $pretty = null, array $headers = []): Response
     {
         if (is_array($body) === true) {
-            $body = json_encode($body, $pretty === true ? JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES : null);
+            $body = json_encode($body, $pretty === true ? JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES : 0);
         }
 
         return new static([
