@@ -16,4 +16,4 @@ $routes = include '../routes/web.php';
 
 $controller = new Controller();
 
-echo App::run($routes, $controller);
+echo (new App())->run($routes, $controller);
