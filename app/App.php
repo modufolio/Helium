@@ -26,7 +26,7 @@ class App
         $action = $routes[$uri_path] ?? notFound();
 
         if(is_a($action, 'Closure')){
-            return $this->Io($action());
+            return $this->Io($action->call($this));
         }
         $actions = get_class_methods($class);
         $actionController = strtolower($_SERVER['REQUEST_METHOD']) . ucfirst($action);
