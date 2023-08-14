@@ -11,6 +11,12 @@
 		"start": [
 			"Composer\\Config::disableProcessTimeout",
 			"@php -S localhost:8005 -t public/"
+		],
+		"post-install-cmd": [
+			"@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
 		]
-	}
+	},
+  "require": {
+    "ext-json": "*"
+  }
 }

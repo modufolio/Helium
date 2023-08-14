@@ -1,9 +1,10 @@
 <?php
 
+use App\Controllers\HomeController;
+
 return [
 
-    '/'   => 'homepage',
-    'api/list' => 'api',
+    '/'   => [HomeController::class, 'index'],
     'json' => function () {
         return [
             'message' => 'hello world'

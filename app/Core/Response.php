@@ -1,6 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Core;
+
+use App\Throwable;
 
 class Response
 {

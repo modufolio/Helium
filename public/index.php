@@ -1,7 +1,6 @@
 <?php
 
-use App\App;
-use App\Controllers\Controller;
+use App\Core\App;
 
 
 ini_set('display_errors', 1);
@@ -14,6 +13,5 @@ require_once '../bootstrap.php';
 
 $routes = include '../routes/web.php';
 
-$controller = new Controller();
 
-echo (new App())->run($routes, $controller);
+exit((new App())->setRoutes()->run());

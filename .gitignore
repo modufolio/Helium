@@ -60,3 +60,4 @@ writable/database/storage.db
 *.db
 
 *.lock
+.env

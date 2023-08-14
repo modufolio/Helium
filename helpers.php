@@ -1,15 +1,30 @@
 <?php
 
-use App\Response;
+use App\Core\App;
 
-function getRequestTime(): string
-{
-    $time = microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"];
-    return 'Page generated:' .  sprintf('%s ms', number_format($time * 1000, 2));
+if (!function_exists('app')) {
+    function app(): object
+    {
+        return App::instance();
+    }
 }
 
-function notFound(): Response
-{
-    return new Response('Not Found', null, 404);
+if (!function_exists('env')) {
+    function env(string $key, $default = null)
+    {
+        static $loaded = [];
+
+        if (empty($loaded)) {
+            $loaded = parse_ini_file(  '.env', false, INI_SCANNER_RAW);
+            foreach ($loaded as &$value) {
+                $value = trim($value);
+                $value = in_array($value, ['true', 'false']) ? ($value === 'true') : $value;
+            }
+        }
+
+        return $_ENV[$key] ?? $_SERVER[$key] ?? $loaded[$key] ?? $default;
+    }
 }
+
+
 
