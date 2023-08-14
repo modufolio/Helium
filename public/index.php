@@ -3,15 +3,8 @@
 use App\Core\App;
 
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 define("START_TIMER", microtime(true));
 
-require_once '../bootstrap.php';
-
-$routes = include '../routes/web.php';
-
+require_once dirname(__DIR__) .'/bootstrap.php';
 
 exit((new App())->setRoutes()->run());
