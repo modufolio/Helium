@@ -14,7 +14,7 @@ if (!function_exists('env')) {
     {
         static $loaded = [];
 
-        if (empty($loaded)) {
+        if (empty($loaded) && file_exists('.env')) {
             $loaded = parse_ini_file(  '.env', false, INI_SCANNER_RAW);
             foreach ($loaded as &$value) {
                 $value = trim($value);
